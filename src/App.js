@@ -81,7 +81,7 @@ function App() {
           <div>
             <EditTodo index={cardIndex} editTodo={editTodo} showEditTodo={showEditTodo} setEditTodo={setEditTodo} todo={todos[cardIndex]} />
             {todos.map((todo, index) => (
-              <div>
+              <div key={index}>
                 <Card className={todo.isDone ? "bg-light text-muted" : ""} >
                   <Card.Body>
                     <Todo

@@ -100,8 +100,8 @@ export default function SearchAppBar({ setForm }) {
                         onClick={handleDrawerOpen}
                     ><MenuIcon />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                        <h3>Todoler</h3>
+                    <Typography className={classes.title} variant="h4" noWrap>
+                        Todoler
                     </Typography>
                 </Toolbar>
             </AppBar>
