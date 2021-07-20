@@ -17,6 +17,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AddToPhotos from '@material-ui/icons/AddCircle';
 import HomeIcon from '@material-ui/icons/Home';
 
+const drawerWidth = 240;
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -46,6 +48,21 @@ const useStyles = makeStyles((theme) => ({
                 width: '20ch',
             },
         },
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        // necessary for content to be below app bar
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
     },
 }));
 

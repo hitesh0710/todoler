@@ -1,6 +1,5 @@
 .app {
   padding: 30px;
-  background-color: floralwhite;
 }
 
 .todo {
@@ -11,4 +10,8 @@
 }
 .done {
   background-color: blue;
+}
+.body
+{
+  background-color: black;
 }

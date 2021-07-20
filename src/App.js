@@ -9,7 +9,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
 import UndoIcon from '@material-ui/icons/Undo';
 
-
 function Todo({ todo, index, markTodo, unmarkTodo, removeTodo, setEditTodo, setIndex }) {
   return (
     <div
@@ -74,11 +73,11 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="bg-dark">
       <SearchAppBar setForm={setForm} />
       <div className="app">
         <div className="container">
-          <h1 className="text-center mb-4">Todo List</h1>
+          <h1 className="text-center mb-4 text-white">Todo List</h1>
           <div>
             {todos.map((todo, index) => (
               <div>
