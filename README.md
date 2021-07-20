@@ -9,7 +9,7 @@ A simple todo webapp
 ## Prerequisites
 1. React.js v17.0.2+
 2. react bootstrap v2.0.0-beta.2
-3. bootstrao v5.0.2
+3. bootstrap v5.0.2
 
 ## Available Scripts
 
