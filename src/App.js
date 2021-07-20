@@ -79,9 +79,9 @@ function App() {
         <div className="container">
           <h1 className="text-center mb-4 text-white">Todo List</h1>
           <div>
+            <EditTodo index={cardIndex} editTodo={editTodo} showEditTodo={showEditTodo} setEditTodo={setEditTodo} todo={todos[cardIndex]} />
             {todos.map((todo, index) => (
               <div>
-                <EditTodo index={cardIndex} editTodo={editTodo} showEditTodo={showEditTodo} setEditTodo={setEditTodo} todo={todos[cardIndex]} />
                 <Card className={todo.isDone ? "bg-light text-muted" : ""} >
                   <Card.Body>
                     <Todo
