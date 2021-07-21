@@ -52,17 +52,18 @@ function FormTodo({ addTodo, setForm, showTodo }) {
     );
 }
 
-function EditTodo({ index, editTodo, showEditTodo, setEditTodo, todo }) {
+function EditTodo({ _id, editTodo, showEditTodo, setEditTodo, todo }) {
     const [value, setValue] = React.useState('');
     const handleClose = () => setEditTodo(false);
     React.useEffect(() => {
-        setValue(todo.text);
+        if (todo)
+            setValue(todo.text);
     }, [showEditTodo]);
 
     const handleSubmit = e => {
         e.preventDefault();
         if (!value) return;
-        editTodo(index, value);
+        editTodo(_id, value, todo.isDone);
         setEditTodo(false);
         setValue("");
     };
