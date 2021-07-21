@@ -11,16 +11,14 @@ import DoneIcon from '@material-ui/icons/Done';
 import UndoIcon from '@material-ui/icons/Undo';
 import Toast from './toast/Toast';
 import { snackbar } from './toast/Toast';
+import AddToPhotos from '@material-ui/icons/AddCircle';
 
 const baseURL = 'https://todoler-backend.herokuapp.com';
 
 function Todo({ todo, index, markTodo, unmarkTodo, removeTodo, setEditTodo, setID, _id, setIndex }) {
   return (
-    <div
-      className="todo"
-
-    >
-      <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}><b>{todo.text}</b></span>
+    <div className="todo">
+      <span className="textOverflow" style={{ textDecoration: todo.isDone ? "line-through" : "" }}><b>{todo.text}</b></span>
       <div>
         <Button variant="outline-primary" onClick={() => { setEditTodo(true); setID(_id); setIndex(index) }}><EditIcon /></Button>{' '}
         {
@@ -42,6 +40,8 @@ function App() {
   const [cardIndex, setIndex] = React.useState(0);
   const [isLoading, setLoading] = React.useState(true);
   const [state, changeState] = React.useState(true);
+  const [isError, setError] = React.useState(false);
+
 
   React.useEffect(() => {
     axios.get(`${baseURL}/todos`)
@@ -49,10 +49,12 @@ function App() {
         setTimeout(() => {
           setTodos(response.data);
           setLoading(false);
+          setError(false);
         }, 1000);
       })
       .catch((error) => {
         snackbar("error", error);
+        setError(true);
       })
 
   }, [isLoading, state]);
@@ -139,13 +141,15 @@ function App() {
       <div className="app">
         <div className="container">
           <h1 className="text-center mb-4 text-white">Todo List</h1>
+          <hr className="text-light" />
           <div>
             {
-              isLoading ? (
-                <div className="d-flex justify-content-center">
+              isLoading ?
+                isError ? (<p className="text-danger d-flex justify-content-center" style={{ fontSize: 18 }}>An error occured. Please try again later.</p>) : (<div className="d-flex justify-content-center">
                   <div className="spinner-border text-white" style={{ width: '3rem', height: '3rem' }} role="status">
                   </div>
-                </div>) : todos.map((todo, index) => (
+                </div>)
+                : (<div>{todos.map((todo, index) => (
                   <div key={index}>
                     <Card className={todo.isDone ? "bg-light text-muted" : ""} >
                       <Card.Body>
@@ -165,7 +169,14 @@ function App() {
                       </Card.Body>
                     </Card>
                   </div>
-                ))
+                ))}
+                  {todos.length <= 0 &&
+                    <div><h3 className="text-muted d-flex justify-content-center">No Todos to show...</h3>
+                      <h4 className="text-muted d-flex justify-content-center">
+                        <span className="text-primary pointer" onClick={() => setForm(true)}><AddToPhotos /> click here</span>&nbsp; to add a new todo</h4>
+                    </div>
+                  }
+                </div>)
             }
             <EditTodo _id={cardID} editTodo={editTodo} showEditTodo={showEditTodo} setEditTodo={setEditTodo} todo={todos[cardIndex]} />
           </div>

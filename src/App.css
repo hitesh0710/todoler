@@ -1,17 +1,38 @@
 .app {
   padding: 30px;
 }
-
 .todo {
   align-items: center;
   display: flex;
   font-size: 18px;
-  justify-content: space-between;  
+  justify-content: space-between;
+}
+.textOverflow {
+  width: 720px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media only screen and (max-width: 600px) {
+  .textOverflow {
+      width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+ }
 }
 .done {
   background-color: blue;
 }
-.body
-{
+.body {
   background-color: black;
+}
+.pointer {
+  cursor: pointer;
+}
+.hr {
+  padding: 30px;
+}
+.p{
+  font-size: 40px;
 }
