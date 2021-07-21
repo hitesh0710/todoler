@@ -12,7 +12,7 @@ import UndoIcon from '@material-ui/icons/Undo';
 import Toast from './toast/Toast';
 import { snackbar } from './toast/Toast';
 
-const baseURL = 'http://todoler-backend.herokuapp.com';
+const baseURL = 'https://todoler-backend.herokuapp.com';
 
 function Todo({ todo, index, markTodo, unmarkTodo, removeTodo, setEditTodo, setID, _id, setIndex }) {
   return (
